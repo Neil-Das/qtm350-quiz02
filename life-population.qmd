@@ -1,0 +1,23 @@
+---
+title: "Life Expectancy and Population"
+---
+
+# Life Expectancy and Population
+
+In this analysis, we explore the relationship between life expectancy and population size using the Gapminder dataset. This relationship helps to understand how population dynamics might affect or reflect changes in life expectancy over time.
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+gapminder <- read.csv("gapminder.csv")
+
+# Create a scatter plot of life expectancy vs population
+ggplot(gapminder, aes(x = population_millions, y = life_expectancy)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  labs(
+    title = "Relationship Between Life Expectancy and Population",
+    x = "Population (millions)",
+    y = "Life Expectancy"
+  )
+```

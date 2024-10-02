@@ -14,10 +14,31 @@
     "text": "About this site"
   },
   {
+    "objectID": "life-gdp.html",
+    "href": "life-gdp.html",
+    "title": "Life Expectancy and GDP per Capita",
+    "section": "",
+    "text": "Life Expectancy and GDP per Capita\nIn this analysis, we examine the relationship between life expectancy and GDP per capita across countries using the Gapminder dataset. Typically, higher GDP per capita is associated with longer life expectancy, indicating better living conditions and healthcare.\n\n# Load necessary libraries\nlibrary(ggplot2)\ngapminder &lt;- read.csv(\"gapminder.csv\")\n\n# Create a scatter plot of life expectancy vs GDP per capita\nggplot(gapminder, aes(x = gdp_per_capita, y = life_expectancy)) +\n  geom_point() +\n  geom_smooth(method = \"loess\") +\n  scale_x_log10() +\n  labs(\n    title = \"Relationship Between Life Expectancy and GDP per Capita\",\n    x = \"GDP per Capita (log scale)\",\n    y = \"Life Expectancy\"\n  )\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "country.html",
+    "href": "country.html",
+    "title": "Country Analysis",
+    "section": "",
+    "text": "Country Analysis\nThis page analyzes changes in life expectancy, GDP per capita, and population over time for a specific country using the Gapminder dataset. This analysis will help understand how these key indicators evolved over time for the selected country.\n\n# Load necessary libraries\nlibrary(ggplot2)\ngapminder &lt;- read.csv(\"gapminder.csv\")\n\n# Filter for a specific country, for example, \"United States\"\ncountry_data &lt;- subset(gapminder, country == \"United States\")\n\n# Create a plot showing life expectancy, GDP per capita, and population over time\nggplot(country_data, aes(x = year)) +\n  geom_line(aes(y = life_expectancy, color = \"Life Expectancy\")) +\n  geom_line(aes(y = gdp_per_capita / 1000, color = \"GDP per Capita (in thousands)\")) +\n  geom_line(aes(y = population_millions / 10, color = \"Population (in tens of millions)\")) +\n  labs(\n    title = \"Changes in Life Expectancy, GDP per Capita, and Population for United States\",\n    x = \"Year\",\n    y = \"Values\",\n    color = \"Metric\"\n  ) +\n  scale_y_continuous(sec.axis = sec_axis(~.*10, name = \"Population (millions)\"))"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "qtm350-quiz02",
+    "title": "Gapminder Dataset Overview",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Gapminder Dataset Analysis\nThe Gapminder dataset contains data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007.\n\nLife Expectancy and GDP per Capita\nLife Expectancy and Population\nCountry Analysis"
+  },
+  {
+    "objectID": "life-population.html",
+    "href": "life-population.html",
+    "title": "Life Expectancy and Population",
+    "section": "",
+    "text": "Life Expectancy and Population\nIn this analysis, we explore the relationship between life expectancy and population size using the Gapminder dataset. This relationship helps to understand how population dynamics might affect or reflect changes in life expectancy over time.\n\n# Load necessary libraries\nlibrary(ggplot2)\ngapminder &lt;- read.csv(\"gapminder.csv\")\n\n# Create a scatter plot of life expectancy vs population\nggplot(gapminder, aes(x = population_millions, y = life_expectancy)) +\n  geom_point() +\n  geom_smooth(method = \"loess\") +\n  labs(\n    title = \"Relationship Between Life Expectancy and Population\",\n    x = \"Population (millions)\",\n    y = \"Life Expectancy\"\n  )\n\n`geom_smooth()` using formula = 'y ~ x'"
   }
 ]
